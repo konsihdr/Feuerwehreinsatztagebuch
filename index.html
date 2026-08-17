@@ -375,6 +375,19 @@
     white-space: nowrap;
   }
 
+  /* ---------- Footer ---------- */
+  .site-footer {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 8px 12px 10px;
+    font-size: 0.72rem;
+  }
+  .site-footer a {
+    color: #9aa1ac;
+    text-decoration: none;
+  }
+  .site-footer a:hover { text-decoration: underline; }
+
   /* ---------- responsive: stack columns on narrow screens ---------- */
   @media (max-width: 980px) {
     html, body { height: auto; }
@@ -400,6 +413,7 @@
   @media print {
     html, body { background: #fff; height: auto; display: block; }
     #app { display: none !important; }
+    .site-footer { display: none !important; }
     #print-area {
       display: block !important;
       font-family: Arial, Helvetica, sans-serif;
@@ -748,12 +762,7 @@
   function blankRoster() {
     return {
       mitglieder: [],
-      gegenstaende: [
-        'LF (Löschfahrzeug)', 'TLF (Tanklöschfahrzeug)', 'DLK (Drehleiter)', 'RW (Rüstwagen)',
-        'ELW 1', 'ELW 2', 'MTW', 'GW (Gerätewagen)', 'KdoW', 'RTW', 'NEF',
-        'C-Rohr', 'B-Rohr', 'D-Rohr', 'Schaumrohr',
-        'Pressluftatmer (PA)', 'Wärmebildkamera', 'Rettungsschere', 'Stromerzeuger', 'Belüftungsgerät'
-      ]
+      gegenstaende: []
     };
   }
 
@@ -1536,5 +1545,8 @@
 })();
 </script>
 
+<footer class="site-footer">
+  <a href="http://impressum.hdr-it.de">Impressum</a>
+</footer>
 </body>
 </html>
