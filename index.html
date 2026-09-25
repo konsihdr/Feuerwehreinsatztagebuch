@@ -804,7 +804,7 @@
     persist();
     renderKraefte();
     renderRosterLists();
-    scrollTableToBottom('kraefte-body');
+    scrollTableToTop('kraefte-body');
   }
 
   /* ---------- CSV import / export for roster ---------- */
@@ -1000,7 +1000,7 @@
       renderEmptyRow(tbody, 3, 'Keine Treffer für „' + tagebuchFilter.trim() + '".');
       return;
     }
-    entries.forEach(function (entry) {
+    entries.slice().reverse().forEach(function (entry) {
       var tr = document.createElement('tr');
       if (entry.geloescht) tr.className = 'row-deleted';
 
@@ -1065,7 +1065,7 @@
       renderEmptyRow(tbody, 3, 'Noch keine Einträge.');
       return;
     }
-    state.kraefte.forEach(function (entry) {
+    state.kraefte.slice().reverse().forEach(function (entry) {
       var tr = document.createElement('tr');
       if (entry.geloescht) tr.className = 'row-deleted';
 
@@ -1198,10 +1198,10 @@
     if (roster) renderRosterLists();
   }
 
-  function scrollTableToBottom(tbodyId) {
+  function scrollTableToTop(tbodyId) {
     var tbody = document.getElementById(tbodyId);
     var wrap = tbody && tbody.closest('.table-wrap');
-    if (wrap) wrap.scrollTop = wrap.scrollHeight;
+    if (wrap) wrap.scrollTop = 0;
   }
 
   /* ---------- entries ---------- */
@@ -1212,7 +1212,7 @@
     state.tagebuch.push({ id: uid(), zeit: new Date().toISOString(), text: text, geloescht: false, history: [] });
     persist();
     renderTagebuch();
-    scrollTableToBottom('tagebuch-body');
+    scrollTableToTop('tagebuch-body');
   }
 
   /* ---------- JSON export / import ---------- */
